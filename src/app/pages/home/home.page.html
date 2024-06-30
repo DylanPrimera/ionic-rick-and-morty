@@ -1,13 +1,49 @@
-<ion-header [translucent]="true">
+<ion-header mode="md">
   <ion-toolbar>
-    <ion-title>home</ion-title>
+    <ion-title>
+      <strong>Rick & Morty</strong>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">home</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content mode="ios">
+  <div class="glass-content">
+    <ion-grid class="">
+      <ion-row>
+        <ion-col class="flex justify-center items-center" size="12">
+          <ion-searchbar class="max-w-[350px] text-white" placeholder="Search a character" [(ngModel)]="params.name"  (ionInput)="searchCharacters()" [debounce]="250"></ion-searchbar>
+        </ion-col>
+      </ion-row>
+      <ion-row class="flex justify-center items-center w-full">
+        <ion-col routerLink="/character-detail/{{c.id}}" *ngFor="let c of characters" size="12" size-lg="3" size-md="6" size-sm="12">
+          <ion-card class="t-card hover:cursor-pointer ">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="4" size-lg="4" size-md="4">
+                  <ion-avatar>
+                    <img [src]="c.image" />
+                  </ion-avatar>
+                </ion-col>
+                <ion-col size="8" size-lg="8" size-md="8">
+                  <article>
+                    <h4 class="font-bold text-xl">{{c.name}}</h4>
+                  </article>
+                  <article>
+                    <p>First seen:</p>
+                    <span><strong>{{c.origin.name}}</strong></span>
+                    <p>Last seen:</p>
+                    <span><strong>{{c.location.name}}</strong></span>
+                  </article>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-infinite-scroll threshold="25%"  position="bottom" (ionInfinite)="getCharacters($event)">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more characters">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
 </ion-content>
