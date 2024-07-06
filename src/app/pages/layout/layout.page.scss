@@ -1,0 +1,14 @@
+ion-menu::part(container) {
+  border-radius: 0 20px 20px 0;
+  background: #0b1035;
+}
+
+ion-menu {
+  ion-content {
+    --ion-background-color: #0b1035;
+  }
+}
+.selected {
+    --background: #168ea1fc;
+    font-weight: bolder;
+}

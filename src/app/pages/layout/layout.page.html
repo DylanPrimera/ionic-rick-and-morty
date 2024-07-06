@@ -1,0 +1,28 @@
+<ion-menu contentId="main-content">
+  <ion-header mode="md">
+    <ion-toolbar>
+      <ion-menu-toggle>
+        <div class="w-full p-1 flex justify-end items-center text-white">
+          <button
+            class="border-0 rounded-lg p-1 w-[32px] h-[30px] bg-almost-black flex justify-center items-center mr-2 text-[40px]"
+          >
+            <ion-icon name="close-outline" class="text-[30px]"></ion-icon>
+          </button>
+        </div>
+      </ion-menu-toggle>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list class="mt-4">
+      <ion-menu-toggle>
+        <ion-item *ngFor="let p of pages" [routerLink]="[p.routerLink]" routerLinkActive="selected">
+          <ion-icon slot="start" name="{{p.icon}}"></ion-icon>
+          <ion-label> {{p.title}} </ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<div class="ion-page">
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+</div>

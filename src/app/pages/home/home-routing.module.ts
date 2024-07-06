@@ -6,8 +6,17 @@ import { HomePage } from './home.page';
 const routes: Routes = [
   {
     path: '',
-    component: HomePage
-  }
+    component: HomePage,
+    children: [
+      {
+        path: 'character-detail',
+        loadChildren: () =>
+          import('../character-detail/character-detail.module').then(
+            (m) => m.CharacterDetailPageModule
+          ),
+      },
+    ],
+  },
 ];
 
 @NgModule({

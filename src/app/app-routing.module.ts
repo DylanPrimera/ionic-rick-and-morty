@@ -8,16 +8,12 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'character-detail/:id',
-    loadChildren: () => import('./pages/character-detail/character-detail.module').then( m => m.CharacterDetailPageModule)
-  },
-  {
-    path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
-  },
-  {
     path: 'intro',
     loadChildren: () => import('./pages/intro/intro.module').then( m => m.IntroPageModule)
+  },
+  {
+    path: 'layout',
+    loadChildren: () => import('./pages/layout/layout.module').then( m => m.LayoutPageModule)
   },
 ];
 

@@ -4,7 +4,7 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      <strong>Characters</strong>
+      <strong>Episodes</strong>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -16,17 +16,16 @@
         <ion-col class="flex justify-center items-center" size="12">
           <ion-searchbar
             class="max-w-[350px] text-white"
-            placeholder="Search a character"
+            placeholder="Search episode"
             [(ngModel)]="params.name"
-            (ionInput)="searchCharacters()"
+            (ionInput)="searchEpisode()"
             [debounce]="250"
           ></ion-searchbar>
         </ion-col>
       </ion-row>
       <ion-row class="flex justify-center items-center w-full">
         <ion-col
-          routerLink="/layout/characters/character-detail"
-          *ngFor="let c of characters"
+          *ngFor="let c of episodes"
           size="12"
           size-lg="3"
           size-md="6"
@@ -35,20 +34,13 @@
           <ion-card class="t-card hover:cursor-pointer">
             <ion-grid>
               <ion-row>
-                <ion-col size="4" size-lg="4" size-md="4">
-                  <ion-avatar>
-                    <img [src]="c.image" />
-                  </ion-avatar>
-                </ion-col>
-                <ion-col size="8" size-lg="8" size-md="8">
+                <ion-col size="12" size-lg="12" size-md="12">
                   <article>
                     <h4 class="font-bold text-xl">{{c.name}}</h4>
                   </article>
                   <article>
-                    <p>First seen:</p>
-                    <span><strong>{{c.origin.name}}</strong></span>
-                    <p>Last seen:</p>
-                    <span><strong>{{c.location.name}}</strong></span>
+                    <p>Episode:</p>
+                    <span><strong>{{c.episode}}</strong></span>
                   </article>
                 </ion-col>
               </ion-row>
@@ -60,7 +52,7 @@
     <ion-infinite-scroll
       threshold="25%"
       position="bottom"
-      (ionInfinite)="getCharacters($event)"
+      (ionInfinite)="getEpisodes($event)"
     >
       <ion-infinite-scroll-content
         loadingSpinner="bubbles"
